@@ -1,0 +1,33 @@
+//My version of the string conversion for C++ 14
+string timeConversion(string s) {
+    if(s[8] == 'A' || s[8] == 'a')
+    {
+        if(s[0] == '1' && s[1] == '2')
+        {
+            s[0] = '0';
+            s[1] = '0';
+        }
+    }
+    else if(s[8] == 'P' || s[8] == 'p')
+    {
+        if(s[0] == '1' && s[1] == '2')
+        {
+            //leave empty cause dont need to do anything
+        }
+        else
+        {
+            s[0] = s[0] + 1;
+            if(s[1] == 8 || s[1] == 9)
+                s[0] = s[0] + 1; //If it is a 8 or 9, add an aditional 1 to = 2_
+            s[1] = s[1] + 2;
+            if(s[1] > 57) //using ascii values if goes over '9'
+                s[1] = s[1] - 10;
+        }
+    }
+
+    //remove the AM/PM
+    s.pop_back();
+    s.pop_back();
+    
+    return s;
+}
